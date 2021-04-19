@@ -27,7 +27,7 @@ namespace YTDownloader
                 download_button.Enabled = false;
 
 
-                var fileLoc = @appLocation + @"\Downloads\";
+                var fileLoc = textBox1.Text;
                 var yt = YouTube.Default;
                 var video = await yt.GetVideoAsync(link.Text);
 
@@ -59,11 +59,19 @@ namespace YTDownloader
 
         private void Main_Load(object sender, EventArgs e)
         {
+            textBox1.Text = @appLocation + @"\Downloads\";
+
             if (Directory.Exists(@appLocation+@"\Downloads\")){}
             else
             {
                 Directory.CreateDirectory(@appLocation+@"\Downloads\");
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
     }
 }
